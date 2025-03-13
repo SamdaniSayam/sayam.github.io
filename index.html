@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Golam Samdani Sayam - Frontend Developer, Automotive Designer, and Physics Student.">
+    <meta name="keywords" content="portfolio, frontend developer, automotive design, physics, ZERCHONE">
+    <meta name="author" content="Golam Samdani Sayam">
+    <title>Golam Samdani Sayam - Portfolio</title>
+    <style>
+        .accent-color {
+    color: var(--accent);
+}
+
+        /* Container for the Mode Switch Button */
+        .mode-switch-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            /* Adjust as needed to keep it away from your contact area */
+            z-index: 1000;
+        }
+
+        /* Mode Switch Button Styles */
+        .mode-switch {
+            width: 45px;
+            height: 45px;
+            background-color: #f9f9f9;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+
+        .mode-switch:hover {
+            transform: scale(1.1);
+        }
+
+        /* Icon inside the button */
+        .mode-switch .icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            margin: 10px auto;
+            background: url(icon-sun.svg) no-repeat center;
+            background-size: contain;
+            transition: background 0.3s ease;
+        }
+
+        /* Dark mode styles for the page */
+
+        /* Change button background for dark mode */
+        body.dark-mode .mode-switch {
+            background-color: #444;
+        }
+
+        /* Switch the icon when in dark mode */
+        body.dark-mode .mode-switch .icon {
+            background: url(icon-moon.svg) no-repeat center;
+            background-size: contain;
+        }
+
+        /* Mode Switch Button Styles */
+        body.mode-switch {
+            position: fixed;
+            /* Sticks to the viewport */
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: #f9f9f9;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            z-index: 1000;
+            /* Ensure it overlays other elements */
+        }
+
+        body.mode-switch:hover {
+            transform: scale(1.1);
+        }
+
+        /* Icon inside the button */
+        body.mode-switch .icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            margin: 10px auto;
+            background: url(icon-sun.svg) no-repeat center;
+            background-size: contain;
+            transition: background 0.3s ease;
+        }
+
+        /* Dark mode styles applied to the body */
+        body.dark-mode {
+            background-color: #222;
+            color: #e0e0e0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Adjust the button background for dark mode */
+        body.dark-mode .mode-switch {
+            background-color: #444;
+        }
+
+        /* Switch the icon in dark mode */
+        body.dark-mode .mode-switch .icon {
+            background: url(icon-moon.svg) no-repeat center;
+            background-size: contain;
+        }
+
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --border: #30363d;
+            --card-bg: #21262d;
+            --button-bg: #58a6ff;
+            --button-hover: #6cb6ff;
+        }
+
+        /* Updated Toggle Button CSS */
+        .mode-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(135deg, #58a6ff, #6cb6ff);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+        }
+
+        .mode-switch:hover {
+            transform: scale(1.1);
+        }
+
+        .toggle-circle {
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .mode-switch {
+            background: linear-gradient(135deg, #444, #666);
+        }
+
+        body.dark-mode .toggle-circle {
+            transform: translateX(30px);
+            background-color: #222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: var(--text-primary);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        #welcome {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-content {
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .welcome-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-info {
+            flex: 2;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .photo-wrapper {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid rgba(0, 120, 215, 0.8);
+            /* Vibrant semi-transparent border */
+            background: linear-gradient(135deg, #0078D7, #00C6FF);
+            /* Gradient border color */
+            padding: 5px;
+            /* Space for the gradient effect */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            /* Subtle shadow for depth */
+            transition: all 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .photo-wrapper:hover {
+            transform: scale(1.1);
+            /* Smooth zoom-in effect */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            /* Enhanced shadow on hover */
+            background: linear-gradient(135deg, #00C6FF, #0078D7);
+            /* Reverse gradient for dynamic hover effect */
+        }
+
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: rgba(88, 166, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        .project-link:hover {
+            background-color: rgba(88, 166, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-input:valid {
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--button-hover);
+        }
+
+        .form-success {
+            display: none;
+            color: #2ea043;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            border: 1px solid #238636;
+            border-radius: 6px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            text-decoration: none;
+            border: 1px solid var(--border);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--bg-secondary);
+                padding: 1rem 0;
+                text-align: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                margin-bottom: 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-title {
+                font-size: 2.2rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                /* Always show for desktops */
+                flex-direction: row;
+            }
+
+            .menu-toggle {
+                display: none;
+                /* Hide toggle button */
+            }
+        }
+        #achievements .card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+#achievements .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#achievements .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    background: linear-gradient(135deg, var(--accent), #6cb6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.3s ease;
+}
+
+#achievements .card-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+#achievements .card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+#achievements .section-title {
+    background: linear-gradient(135deg, var(--accent), #6cb6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    animation: fadeInUp 1s ease forwards;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <!-- Dark/Light Mode Toggle Button -->
+        <div class="container header-content">
+            <div class="logo">Portfolio</div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-links">
+                <li><a href="#welcome" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+        <!-- Insert into a blank space – e.g., in your header -->
+        <div class="mode-switch-container">
+
+        </div>
+
+    </header>
+    <!-- Updated Toggle Button HTML -->
+    <button id="mode-switch" class="mode-switch" aria-label="Toggle Dark/Light Mode">
+        <span class="toggle-circle" aria-hidden="true"></span>
+    </button>
+
+    <section id="welcome">
+        <div class="particles" id="particles-js"></div>
+        <div class="welcome-content">
+            <h1 class="welcome-title">Hello, I'm <span class="accent-color">Golam Samdani Sayam</span></h1>
+            <p class="welcome-subtitle">Frontend Developer | Innovator in Automotive Design (ZERCHONE) | B.Sc. Physics
+                Student</p>
+                <a href="#about" id="explore-button" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="photo-wrapper">
+                    <img src="IMG_20250208_022251_663.png" alt="Portfolio Image">
+                </div>
+
+                <div class="about-info">
+                    <p>I am studying BSc in Physics, combining theoretical interest with hands-on expertise in
+                        technology and innovation. Having worked as a frontend web developer and an intermediate
+                        programmer, I thrive on solving challenging problems and crafting effective solutions, and have
+                        experience in C, JavaScript, and Fortran.</p>
+                    <p>Apart from programming, I am also highly interested in the systems that control our
+                        world—literally! My interest in car engines has propelled me to become a car engine designer and
+                        inventor, which has brought me to my invention, ZERCHONE. This reflects my dedication to pushing
+                        boundaries in the automotive sector.</p>
+                    <p>In the same way, I enjoy challenges involving strategic reasoning—whether it's cracking difficult
+                        coding problems or honing my skills as a chess player. My ability to adapt, technical
+                        inquisitiveness, and problem-solving nature underlie the essence of what I am.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="experience-timeline">
+                <div class="card" id="exp-1">
+                    <h3 class="card-title">Frontend Developer</h3>
+                    <p class="card-subtitle">Freelance | 2022 - Present</p>
+                    <p>Developing responsive and engaging user interfaces using modern web technologies. Collaborating
+                        with clients to translate design concepts into functional websites and web applications.</p>
+                </div>
+                <div class="card" id="exp-2">
+                    <h3 class="card-title">Automotive Designer & Inventor</h3>
+                    <p class="card-subtitle">ZERCHONE | 2021 - Present</p>
+                    <p>Leading innovative research and development in automotive engine design. Created ZERCHONE, a
+                        breakthrough concept in automotive engineering focused on efficiency and sustainability.</p>
+                </div>
+                <div class="card" id="exp-3">
+                    <h3 class="card-title">Physics Research Assistant</h3>
+                    <p class="card-subtitle">University Laboratory | 2023 - Present</p>
+                    <p>Assisting with research projects in the physics department. Analyzing data, conducting
+                        experiments, and contributing to scientific investigations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="achievements-timeline">
+                <div class="card" id="ach-1">
+                    <h3 class="card-title">1st Runners Up at National Science Competition</h3>
+                    <p class="card-subtitle">Bangabandhu Srijonshil Medha Onneshon 2022</p>
+                    <p>Secured 1st runners-up position at the national level science project showcasing competition, demonstrating innovative thinking and problem-solving skills.</p>
+                </div>
+                <div class="card" id="ach-2">
+                    <h3 class="card-title">Designed and Developed ZERCHONE</h3>
+                    <p class="card-subtitle">Innovative Green Car Engine Concept</p>
+                    <p>Designed and developed ZERCHONE, an innovative and eco-friendly car engine concept, showcasing expertise in automotive engineering and sustainability.</p>
+                </div>
+                <div class="card" id="ach-3">
+                    <h3 class="card-title">Co-founded CSBGMC Science Club</h3>
+                    <p class="card-subtitle">Promoting STEM Engagement</p>
+                    <p>Co-founded the CSBGMC Science Club, organizing workshops and events to promote STEM education and engagement among students.</p>
+                </div>
+                <div class="card" id="ach-4">
+                    <h3 class="card-title">Hult Prize Campus Finalist</h3>
+                    <p class="card-subtitle">Business Strategy & Startup Techniques</p>
+                    <p>Reached the campus-level finals of the Hult Prize competition, developing innovative business strategies and startup techniques to solve global challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="card" id="edu-1">
+                    <h3 class="card-title">Bachelor of Science in Physics</h3>
+                    <p class="card-subtitle">University of Science | Current</p>
+                    <p>Focusing on theoretical physics with additional coursework in computational methods and
+                        programming applications in scientific research.</p>
+                </div>
+                <div class="card" id="edu-2">
+                    <h3 class="card-title">Advanced Certification in Programming</h3>
+                    <p class="card-subtitle">Tech Institute | 2022</p>
+                    <p>Specialized training in multiple programming languages including C, JavaScript, and Fortran with
+                        emphasis on scientific and engineering applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">C Programming</span>
+                <span class="skill-tag">Fortran</span>
+                <span class="skill-tag">Frontend Development</span>
+                <span class="skill-tag">Responsive Design</span>
+                <span class="skill-tag">Automotive Design</span>
+                <span class="skill-tag">Engine Engineering</span>
+                <span class="skill-tag">Physics</span>
+                <span class="skill-tag">Mathematical Modeling</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Scientific Computing</span>
+                <span class="skill-tag">Chess</span>
+                <span class="skill-tag">Strategic Thinking</span>
+                <span class="skill-tag">Innovation</span>
+                <span class="skill-tag">Research</span>
+                <span class="skill-tag">Technical Writing</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="cards-container">
+                <div class="project-card" id="proj-1">
+                    <h3 class="project-title">ZERCHONE Automotive Innovation</h3>
+                    <p class="project-description">A revolutionary automotive engine design focused on sustainability
+                        and efficiency. This project represents a significant advancement in automotive engineering,
+                        combining physics principles with practical mechanical design.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Details</a>
+                        <a href="#" class="project-link">Documentation</a>
+                    </div>
+                </div>
+                <div class="project-card" id="proj-2">
+                    <h3 class="project-title">Physics Simulation Platform</h3>
+                    <p class="project-description">An interactive web-based platform for visualizing complex physics
+                        concepts. Built with JavaScript and HTML5 Canvas, this educational tool helps students
+                        understand theoretical physics through visual demonstrations.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Demo</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card" id="proj-3">
+                    <h3 class="project-title">Computational Physics Toolkit</h3>
+                    <p class="project-description">A collection of programs in C and Fortran for solving complex physics
+                        problems. This toolkit includes modules for numerical integration, differential equations, and
+                        data analysis commonly needed in physics research.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Documentation</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card" id="proj-4">
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p class="project-description">A personal portfolio website (the one you're viewing now) built with
+                        HTML, CSS, and JavaScript. Features smooth animations, responsive design, and dark theme
+                        inspired by GitHub's interface.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form" action="https://formspree.io/f/mqapkyry" method="POST">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-input" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-success">Message sent successfully!</div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/SamdaniSayam" class="social-link">
+                    <i class="fab fa-github"></i> <!-- GitHub Icon -->
+                </a>
+                <a href="https://www.linkedin.com/in/md-golam-samdani-sayam-21a044353/" class="social-link">
+                    <i class="fab fa-linkedin"></i> <!-- LinkedIn Icon -->
+                </a>
+                <a href="#" class="social-link">T</a>
+                <a href="#" class="social-link">I</a>
+            </div>
+            <p class="copyright">© 2025 Golam Samdani Sayam. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.getElementById('explore-button').addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent default jump behavior
+    const target = document.querySelector(this.getAttribute('href')); // Get the target section
+    target.scrollIntoView({
+        behavior: 'smooth', // Smooth scrolling
+        block: 'start' // Align to the top of the section
+    });
+});
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card, .project-card').forEach(card => {
+            observer.observe(card);
+        });
+        document.querySelectorAll('#achievements .card').forEach(card => {
+    observer.observe(card);
+});
+
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#58a6ff'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#58a6ff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Highlight active section in navigation
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(navItem => {
+                navItem.classList.remove('active');
+                if (navItem.getAttribute('href').slice(1) === current) {
+                    navItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modeSwitch = document.getElementById("mode-switch");
+            const body = document.body;
+
+            // Load saved theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) body.classList.add(savedTheme);
+
+            // Toggle theme on button click
+            modeSwitch.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark-mode' : '');
+
+                // Add a glowing effect
+                modeSwitch.style.boxShadow = '0 0 15px 5px rgba(88, 166, 255, 0.6)';
+                setTimeout(() => modeSwitch.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)', 300);
+            });
+        });
+    </script>
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission behavior
+
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const successMsg = form.querySelector('.form-success');
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.reset(); // Clear the form fields
+                    successMsg.style.display = 'block'; // Show success message
+                    setTimeout(() => successMsg.style.display = 'none', 3000); // Hide it after 3 seconds
+                } else {
+                    console.error('Form submission failed:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error:', error); // Log any errors
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message'; // Revert button text
+            }
+        });
+    </script>
+    <script>
+        // Add this script before </body>
+document.querySelector('.copyright').innerHTML = `© ${new Date().getFullYear()} Golam Samdani Sayam. All Rights Reserved.`;
+    </script>
+
+</body>
+
+</html>
