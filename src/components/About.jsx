@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import profileImg from '../assets/profile.jpg';
 
 const About = () => {
   return (
@@ -25,12 +26,10 @@ const About = () => {
             <div style={{ position: 'relative', width: 'clamp(200px, 60vw, 300px)', height: 'clamp(200px, 60vw, 300px)', margin: '0 auto' }}>
               <div style={{ position: 'absolute', inset: -5, background: 'var(--gradient-primary)', borderRadius: '50%', filter: 'blur(20px)', opacity: 0.5, animation: 'pulse 4s infinite alternate' }} />
               <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', position: 'relative', zIndex: 1, border: '4px solid var(--border-color)', background: 'var(--bg-card)' }}>
-                {/* Fallback to placeholder if image fails */}
                 <img 
-                  src="/IMG_20250208_022251_663.png" 
+                  src={profileImg} 
                   alt="Golam Samdani Sayam" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                  onError={(e) => { e.target.src = 'https://via.placeholder.com/300x300/141414/ffffff?text=GS+Sayam' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
                 />
               </div>
             </div>
